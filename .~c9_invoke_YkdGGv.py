@@ -7,7 +7,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-def lambda_handler(event, context):
+    params = urllib.request.urlen
     lineMessage = event["lineMessage"]["events"][0]["message"]["text"]
     logger.info("lineMessage : " + lineMessage)
     res = getReply(lineMessage)
@@ -37,13 +37,11 @@ def getReply(message):
     logger.info("response from API(json) : " + json.dumps(resDict, ensure_ascii=False, indent=4 ) )
 
     status = resDict["status"]
+    perplexity =
 
     if status == 0:
-        perplexity = resDict["results"][0]["perplexity"]
-        if perplexity > 0.2 and perplexity < 1.0:
-            reply = resDict["results"][0]["reply"]
-        else:
-            reply = None
+        reply = resDict["results"][0]["reply"]
+        
     else:
         reply = None
     
